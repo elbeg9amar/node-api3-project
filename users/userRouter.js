@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+const user = require("../users/userDb")
+
 router.post('/', (req, res) => {
   // do your magic!
 });
