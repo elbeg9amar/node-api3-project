@@ -13,8 +13,8 @@ const log = morgan("combined")
 server.use(express.json());
 server.use(log);
 
-server.use('/api/users', userRouter);
 server.use('/api/posts', postRouter);
+server.use('/api/users', userRouter);
 
 server.get('/', (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`);

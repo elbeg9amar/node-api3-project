@@ -2,10 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 
-const user = require("../users/userDb")
+const users = require("../users/userDb")
 
 router.post('/', (req, res) => {
   // do your magic!
+  
 });
 
 router.post('/:id/posts', (req, res) => {
@@ -14,6 +15,14 @@ router.post('/:id/posts', (req, res) => {
 
 router.get('/', (req, res) => {
   // do your magic!
+  users.get(req)
+    .then(users => {
+      res.status(200).json(users)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({error: "Something went wrong"})
+    })
 });
 
 router.get('/:id', (req, res) => {
