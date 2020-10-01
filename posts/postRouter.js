@@ -32,7 +32,7 @@ router.delete('/:id',validatePostId, (req, res) => {
   // do your magic!
   posts.remove(req.params.id)
     .then(post => {
-        res.status(200).json({message:"Deleted"})
+        res.status(200).json({message:`post deleted ${post}`})
     })
     .catch(err => {
       console.log(err)
@@ -49,7 +49,7 @@ router.put('/:id', validatePostId, (req, res) => {
   // do your magic!
   posts.update(id, updatePost)
     .then(post => {
-      res.status(200).json(updatePost)
+      res.status(201).json(post)
     })
     .catch(err => {
       console.log(err)
@@ -73,7 +73,7 @@ function validatePostId(req, res, next) {
     })
     .catch(err => {
       console.log(err)
-      res.status(500).json({error: "error occured"})
+      res.status(500).json({error: "error occured postId"})
     })
 }
 
